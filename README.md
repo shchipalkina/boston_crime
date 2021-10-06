@@ -1,4 +1,6 @@
-# boston_crime
+# boston_crime - Гид по безопасному Бостону
+
+Собран агрегат по районам (поле district)
 
 Запуск с помощью python или 'python crimes.py' в Терминале (два файла .csv должны быть в той же папке, что и crimes.py)
 
