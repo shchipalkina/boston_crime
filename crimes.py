@@ -32,7 +32,7 @@ crimes_monthly = spark.sql("select DISTRICT, percentile_approx(monthly_sum, 0.5)
 
 frequent_crime_types = spark.sql("select DISTRICT, collect_set(C_T) as top_types from (select DISTRICT, C_T from (select DISTRICT, C_T, count(C_T) as cnt from (select DISTRICT, substring_index(NAME, '-', 1) AS C_T from crcodes) group by DISTRICT, C_T) order by cnt desc limit (3)) group by DISTRICT")
 
-first_join = crime_total.join(crimes_monthly,['DISTRICT'],"outer")
+first_join = crime_total.join(crimes_monthly,['DISTRICT'],"inner")
 
 result = first_join.join(frequent_crime_types,['DISTRICT'],"outer")
 
